@@ -1,9 +1,23 @@
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Project
+from .serializers import ProjectSerializer
+
+class ProjectList(APIView):
+    def get(self, request):
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
+
+
+
 # You can either use a class or a function to create views in Django
 
 # 'index' is the function name used to label the default page in an app
+# The below are FBVS (function-based views)
 # Eg: 
 def index(request):
     return render(request, 'index.html')
