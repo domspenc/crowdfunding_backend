@@ -4,7 +4,7 @@ from django.apps import apps
 class ProjectSerializer(serializers.ModelSerializer):
   class Meta:
       model = apps.get_model('projects.Project')
-      fields = '__all__'
+      fields = '__all__' # you can change this to only serialize specific fields too, like 'title' and 'description' etc
 
 
 # This starts the shell...
@@ -31,3 +31,7 @@ my_serializer = ProjectSerializer(record_list, many=True)
 
 # Prints the output - a list of JSON distionaries containing our serialized data!
 print(my_serializer.data)
+
+# you can print a lst of the records using a for loop!
+for idx in range(len(my_serializer.data)):
+   print(my_serializer.data[idx])

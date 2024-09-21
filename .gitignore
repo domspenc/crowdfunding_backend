@@ -164,3 +164,4 @@ cython_debug/
 # extra files
 working_notes.txt
 project_spec.txt
+db.sqlite3
