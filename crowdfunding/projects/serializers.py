@@ -14,6 +14,8 @@ class ProjectSerializer(serializers.ModelSerializer):
       model = apps.get_model('projects.Project')
       fields = '__all__' # you can change this to only serialize specific fields too, like 'title' and 'description' etc
 
+class ProjectDetailSerializer(ProjectSerializer):
+   pledges = PledgeSerializer(many=True, read_only=True)
 
 # # This starts the shell...
 # # Remember - you need to be in the correct folder so it can locate the manage.py file using the below code

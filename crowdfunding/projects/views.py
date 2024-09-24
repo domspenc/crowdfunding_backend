@@ -6,7 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from .models import Project, Pledge
-from .serializers import ProjectSerializer, PledgeSerializer
+from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
+
 
 #https://github.com/SheCodesAus/PlusLessonContent/blob/main/3_Django_and_DRF/views/views.md#5----adding-some-more-functionality-to-our-view-
 class ProjectList(APIView):
@@ -15,14 +16,14 @@ class ProjectList(APIView):
         serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data)
     def post(self, request):
-    serializer = ProjectSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(
+        serializer = ProjectSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
             serializer.data,
             status=status.HTTP_201_CREATED
         )
-    return Response(
+        return Response(
         serializer.errors,
         status=status.HTTP_400_BAD_REQUEST
     )
@@ -36,7 +37,7 @@ class ProjectDetail(APIView):
           raise Http404
   def get(self, request, pk):
       project = self.get_object(pk)
-      serializer = ProjectSerializer(project)
+      serializer = ProjectDetailSerializer(project)
       return Response(serializer.data)
 
 class PledgeList(APIView):
