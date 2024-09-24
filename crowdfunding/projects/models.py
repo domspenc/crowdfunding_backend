@@ -13,8 +13,10 @@ class Pledge(models.Model):
   amount = models.IntegerField()
   comment = models.CharField(max_length=200)
   anonymous = models.BooleanField()
-  project = models.ForeignKey(
-      'Project',
-      on_delete=models.CASCADE,
-      related_name='pledges'
+  project = models.ForeignKey( # the project variable is the 'name' of the foreign key 'column'!
+      'Project', # this line creates the relationship between the Pledge table and the Project table (using the FK)
+      on_delete=models.CASCADE, # this ensures if the Project that this table is related to is deleted, to also delete this pledge
+      related_name='pledges' # https://github.com/SheCodesAus/PlusLessonContent/blob/main/3_Django_and_DRF/model_relations/model_relations.md#13---%EF%B8%8F-the-related-name-%EF%B8%8F
   )
+
+  

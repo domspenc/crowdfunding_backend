@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from django.apps import apps
 
+# what's happening here?
+# https://github.com/SheCodesAus/PlusLessonContent/blob/main/3_Django_and_DRF/serializers/serializers.md#3---%EF%B8%8F-writing-the-code-%EF%B8%8F
+
 class PledgeSerializer(serializers.ModelSerializer):
   class Meta:
       model = apps.get_model('projects.Pledge')
