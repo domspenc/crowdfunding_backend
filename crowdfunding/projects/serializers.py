@@ -10,7 +10,9 @@ class PledgeSerializer(serializers.ModelSerializer):
       fields = '__all__'
 
 class ProjectSerializer(serializers.ModelSerializer):
-  class Meta:
+   owner = serializers.ReadOnlyField(source='owner.id')
+
+class Meta:
       model = apps.get_model('projects.Project')
       fields = '__all__' # you can change this to only serialize specific fields too, like 'title' and 'description' etc
 
