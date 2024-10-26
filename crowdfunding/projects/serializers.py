@@ -5,16 +5,18 @@ from django.apps import apps
 # https://github.com/SheCodesAus/PlusLessonContent/blob/main/3_Django_and_DRF/serializers/serializers.md#3---%EF%B8%8F-writing-the-code-%EF%B8%8F
 
 class PledgeSerializer(serializers.ModelSerializer):
-  class Meta:
+   supporter = serializers.ReadOnlyField(source='supporter.id')
+   class Meta:
       model = apps.get_model('projects.Pledge')
       fields = '__all__'
+      
 
 class ProjectSerializer(serializers.ModelSerializer):
    owner = serializers.ReadOnlyField(source='owner.id')
 
-class Meta:
-      model = apps.get_model('projects.Project')
-      fields = '__all__' # you can change this to only serialize specific fields too, like 'title' and 'description' etc
+   class Meta:
+         model = apps.get_model('projects.Project')
+         fields = '__all__' # you can change this to only serialize specific fields too, like 'title' and 'description' etc
 
 class ProjectDetailSerializer(ProjectSerializer):
    pledges = PledgeSerializer(many=True, read_only=True)
