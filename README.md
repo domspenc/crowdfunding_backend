@@ -1,17 +1,19 @@
-https://github.com/SheCodesAus/PlusLessonContent/blob/main/3_Django_and_DRF/project_readme_template/readme_template.md
-
 
 # Crowdfunding Back End
-{{ your name here }}
 
-## Planning:
-### Concept/Name
-{{ Include a short description of your website concept here. }}
+![](/resources/beanefactor_test_logo.jpg)
+## <strong>Beanefactor</strong> – <em>Where Bean’s Wealth Meets Wag-Worthy Ideas</em>
 
-### Intended Audience/User Stories
-{{ Who are your intended audience? How will they use the website? }}
+### Planning:
+#### Concept
+A crowdfunding-type platform created by a dog (Bean) that that inherits her former owners' multi-million dollar estate, that contains projects created by other dogs that influence how she should spend the money. The purpose of these projects to help other dogs around the world.
+
+#### Intended Audience/User Stories
+This platform is targeted at dogs that have ideas on ways Bean can spend her money to help other dogs around the world. They will create a 'project', or concept that other users (or dogs) can support by pledging (or, sacrificing) treats.
 
 ### Front End Pages/Functionality
+---
+TBC
 - {{ A page on the front end }}
     - {{ A list of dot-points showing functionality is available on this page }}
     - {{ etc }}
@@ -21,15 +23,15 @@ https://github.com/SheCodesAus/PlusLessonContent/blob/main/3_Django_and_DRF/proj
     - {{ etc }}
 
 ### API Spec
-{{ Fill out the table below to define your endpoints. An example of what this might look like is shown at the bottom of the page. 
+---
+| HTTP Method | URL              | Purpose              | Request Body   | Success Response Code | Authentication/Authorisation |
+|-------------|------------------|----------------------|----------------|-----------------------|------------------------------|
+| POST        | /projects/       | Create a new project | Project object | 201                   | Must be logged in            |
+| GET         | /projects/       | Retrieve a project   | Project object | 200                   | N/A                          |
+| POST        | /pledges/        | Create a new pledge  | Pledge object  | 201                   | Must be logged in            |
+| GET         | /pledges/        | Retrieve a pledge    | Pledge object  | 200                   | N/A                          |
+| POST        | /api-token-auth/ | Create a new token   | Token object   | 200                   | Must be logged in            |
 
-It might look messy here in the PDF, but once it's rendered it looks very neat! 
-
-It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
-
-| URL | HTTP Method | Purpose | Purpose | Request Body | Success Response Code | Authentication/Authorisation |
-| --- | ----------- | ------- | ------- | ------------ | --------------------- | ---------------------------- |
-|     |             |         |         |              |                       |                              |
 
 ### DB Schema
-![]( {{ ./relative/path/to/your/schema/image.png }} )
+![](/resources/beanefactor_ERD_diagram.jpeg)
